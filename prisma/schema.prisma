@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Tournament {
+  id         Int     @id @default(autoincrement())
+  name       String  @unique
+  rounds     Int
+  isArchived Boolean @default(false)
+  teams      Team[]
+  matches    Match[]
+}
+
+model Team {
+  id                Int        @id @default(autoincrement())
+  name              String
+  memberOne         String
+  memberTwo         String
+  tournament        Tournament @relation(fields: [tournamentId], references: [id])
+  tournamentId      Int
+  firstTeamMatches  Match[]    @relation("FirstTeam")
+  secondTeamMatches Match[]    @relation("SecondTeam")
+}
+
+model Match {
+  id            Int        @id @default(autoincrement())
+  firstTeam     Team?      @relation("FirstTeam", fields: [firstTeamId], references: [id])
+  firstTeamId   Int?
+  firstTeamPts  Int?
+  secondTeam    Team?      @relation("SecondTeam", fields: [secondTeamId], references: [id])
+  secondTeamId  Int?
+  secondTeamPts Int?
+  round         Int
+  tournament    Tournament @relation(fields: [tournamentId], references: [id])
+  tournamentId  Int
+  isFinished    Boolean    @default(false)
+}
