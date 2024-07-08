@@ -11,17 +11,15 @@ const TournamentList: React.FC<TournamentListProps> = async () => {
         return (
             <div className='m-auto my-4 flex max-w-[400px] flex-col'>
                 {tournaments.success.map((tournament) => (
-                    <div
+                    <Link
                         key={tournament.id}
-                        className='flex w-full items-center justify-between gap-3 rounded-md border p-2'
+                        href={`/tournament/${tournament.id}`}
+                        prefetch={false}
                     >
-                        <Link
-                            href={`/tournament/${tournament.id}`}
-                            prefetch={false}
-                        >
+                        <div className='flex w-full items-center justify-between gap-3 rounded-md border p-2'>
                             <span>{tournament.name}</span>
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 ))}
             </div>
         );
