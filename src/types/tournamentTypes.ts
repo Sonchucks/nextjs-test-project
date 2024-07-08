@@ -24,3 +24,9 @@ export interface TournamentStanding {
     tied: number;
     points: number;
 }
+
+export interface Tournament {
+    id: number;
+    name: string;
+    isArchived: boolean;
+}

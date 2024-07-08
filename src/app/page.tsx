@@ -1,3 +1,11 @@
+import CreateTournamentButton from '@/components/home/CreateTournamentButton';
+import TournamentList from '@/components/home/TournamentList';
+
 export default function Home() {
-    return <div>Home</div>;
+    return (
+        <>
+            <CreateTournamentButton />
+            <TournamentList />
+        </>
+    );
 }
