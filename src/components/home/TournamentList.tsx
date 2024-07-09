@@ -13,7 +13,7 @@ const TournamentList: React.FC<TournamentListProps> = async () => {
                 {tournaments.success.map((tournament) => (
                     <Link
                         key={tournament.id}
-                        href={`/tournament/${tournament.id}`}
+                        href={`/tournament/${tournament.id}/overview`}
                         prefetch={false}
                     >
                         <div className='flex w-full items-center justify-between gap-3 rounded-md border p-2'>
