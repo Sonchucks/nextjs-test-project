@@ -11,3 +11,11 @@ export interface TeamWithNullableId {
     memberTwo: string;
     tournamentId: number;
 }
+
+export interface TeamResponse {
+    id: number;
+    name: string;
+    memberOne: string;
+    memberTwo: string;
+    tournamentId: number;
+}

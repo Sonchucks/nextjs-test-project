@@ -79,7 +79,7 @@ const CreateTournamentForm: React.FC<CreateTournamentFormProps> = () => {
                     return;
                 }
                 if (data.success) {
-                    router.push(`/tournament/${data.success.id}`);
+                    router.push(`/tournament/${data.success.id}/overview`);
                 }
             })
             .finally(() => {

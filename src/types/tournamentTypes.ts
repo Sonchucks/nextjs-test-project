@@ -1,4 +1,4 @@
-import { TeamInfo } from '@/types/teamTypes';
+import { TeamInfo, TeamResponse } from '@/types/teamTypes';
 
 export interface TournamentRequestBody {
     name: string;
@@ -29,4 +29,12 @@ export interface Tournament {
     id: number;
     name: string;
     isArchived: boolean;
+}
+
+export interface FetchTournamentInfoResponse {
+    id: number;
+    name: string;
+    rounds: number;
+    isArchived: boolean;
+    teams: TeamResponse[];
 }

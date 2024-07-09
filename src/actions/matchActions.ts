@@ -5,6 +5,7 @@ import {
     MatchWithNullableTeamIds,
     UpdateMatchRequestBody,
 } from '@/types/matchTypes';
+import { revalidatePath } from 'next/cache';
 
 export const findAllForTournamentRound = async (
     tournamentId: number,
@@ -69,7 +70,9 @@ export const updateMatch = async ({
                 isFinished: true,
             },
         });
-
+        revalidatePath(
+            `/tournament/${updatedMatch.id}/round/${updatedMatch.round}`
+        );
         return { success: updatedMatch };
     } catch (error) {
         return { error: 'Server error!' };
